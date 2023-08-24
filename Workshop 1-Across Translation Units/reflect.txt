@@ -1,0 +1,22 @@
+This workshop #1 is very informative and cleared alot of basic concepts for me. TO begin with, it helped me to understand how the upgraded main function works that accepts the 
+command line arguments. I got to know the argc and argv difference. argc is number of argv components and argv is double char* or array of string or array of array of characters.
+Moving further, I came to know about internal and external linkage. Internal linkage happened at various places where the use of const and constexp came into play. Due to which,
+the variables declared as const and constexp will be accessed within that translational unit only. Moving further, external linkage was also present as we have used the extern keyword
+eg - extern double g_taxrate;
+     extern double g_discount;
+This was done so that these variables can be accessed across multiple translational units as both of these variables are bring used at multiple files. Moving further, static keyword
+placed a significant role in our code. It helped us to display counter for our cars. The way it worked was, the static keyword lets the variable preserve its memory even when
+it went out of scope until the end of the program (until the lifetime of the program).
+eg -          static int counter = 1;
+
+Moving further, header guards were implemented to prevent redefinition or duplication of code definition. In the part 2, major change that was done to this code was that from a 
+fixed array of 10 characters, we changed to storing car brand of any length. That could only be possible using char pointer. eg -       char* brandOfCar{};
+In order to read from the file, first a temporary string object was created, and it stored the input from the file. Then, a new char of the size of string was dynamically alotted.
+Finally, contents from string were copied to that char. Also, 2 operators were overloaded for insertion. One taking in cin on left side and other one for 2 cars. 
+	Eg -  std::istream& operator>>(std::istream& is, Cars& car);
+      	      void operator>>(const Cars& car1, Cars& car2);
+Because, the contents of one car was being copied to other, we need to perform a deep copy as our class now contain resources (dynamic memory) so rule of 3 was applied in that case.
+A copy constructor, copy assingment operator and a destructor was implemented. One thing was kept in mind, to free the memory that was being allocated. Because multiple memory allocations
+were being done for the current car object so it was important to delete the memory after it assigns itself to the array.   
+	Example - currentCar >> recordedCarsOnAds[allCars++]
+Thus, this was our full workshop was implemented nicely with all new c++ features and no mmeory leaks. Thank you!

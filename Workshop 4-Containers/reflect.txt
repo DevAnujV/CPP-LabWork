@@ -1,0 +1,16 @@
+This workshop#4 was really challanging and tricky to work with because it contained a very confusing (I find very confusing) double pointers. Nevertheless, 
+I successfully completed it. The main part of this workshop was based on type of containers like Composition and aggregation. The difference between these
+two is that. In composition, one class is responsible for full control of another class object. From its birth to its death, parent or composer class is responsible
+for all this. In opposite, in aggregation, the object is handled by the composer class but its birth and death (of the objects) is not responsible. In our
+workshop, the restaurant class and reservation class were in composition. Restaurant was responsible for managing reservations. Reservation cannot form object or
+die on it own. Also, ConfirmationSender class and Reservation class were in Aggregation. Confirmation sender is using the reservations but is not responsible for
+its birth and death. It can just point to the array of the pointers of reservation class and use it for its needs.
+This workshop follows rule of 5. There is quiet some difference in how to implement move and copy functions it in the composition and aggregation class. In 
+the composition, copy function restaurant is responsible for actually making a new pointer array and new obejct of the reservation to each pointer array.
+Example -                restaurantReservations[i] = new Reservation(*rest.restaurantReservations[i]);
+In the move function of composition, we are simply pointing the pointer of one restaurant to another. Example - restaurantReservations = rest.restaurantReservations;
+On the other hand, in Aggregation, when implementing copy function, we cannot make a new object of the reservation as this class does not manages it. So, instead
+we only make a double pointer of reservation type and allot it an array of size. That each pointer is then pointing to the comming object's pointer. 
+The implementation of move function, however, is same for both composition and aggregation. We just point to the make the class double pointer points to the new
+one and make the previous points to null.
+The tricky part was resizing the array, but with a bit consistency, I was able to achieve it and the program worked successfully.
